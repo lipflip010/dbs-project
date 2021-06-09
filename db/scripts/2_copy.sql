@@ -1,0 +1,1 @@
+COPY population_total FROM '/data/population_total.csv' DELIMITER ',' CSV HEADER;

@@ -1,5 +1,6 @@
 CREATE TABLE population_total ( 
-  country_Name varchar(40) PRIMARY KEY,
-  year int,
-  count int
+  Country_Name varchar(40),
+  Year int,
+  Count int,
+   PRIMARY KEY(Country_Name, Year)
 );

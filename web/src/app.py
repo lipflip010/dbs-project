@@ -1,6 +1,5 @@
 import io
 
-import redis
 from flask import Flask, Response, request
 from matplotlib.backends.backend_svg import FigureCanvasSVG
 from matplotlib.figure import Figure
@@ -8,7 +7,6 @@ from matplotlib.figure import Figure
 import database
 
 app = Flask(__name__)
-cache = redis.Redis(host='redis', port=6379)
 
 
 @app.route('/population-total')

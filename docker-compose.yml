@@ -23,5 +23,3 @@ services:
       - db
     ports:
       - "5000:5000"
-  redis:
-    image: "redis:alpine"

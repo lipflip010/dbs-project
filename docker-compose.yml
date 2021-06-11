@@ -19,6 +19,8 @@ services:
       - ./web/src:/code
     environment:
       FLASK_ENV: development
+    links:
+      - db
     ports:
       - "5000:5000"
   redis:

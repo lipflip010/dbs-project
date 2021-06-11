@@ -1,3 +1,4 @@
 /.idea/dbs_project.iml
 /.idea/modules.xml
 /.idea/inspectionProfiles/profiles_settings.xml
+/web/src/__pycache__/

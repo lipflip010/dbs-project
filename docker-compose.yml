@@ -12,3 +12,14 @@ services:
       - POSTGRES_DB=dbs2021
     volumes:
       - ./data:/data
+  web:
+    container_name: flask
+    build: ./web
+    volumes:
+      - ./web/src:/code
+    environment:
+      FLASK_ENV: development
+    ports:
+      - "5000:5000"
+  redis:
+    image: "redis:alpine"

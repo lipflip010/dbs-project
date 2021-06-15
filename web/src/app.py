@@ -29,8 +29,8 @@ def population_total():
     axis = fig.add_subplot(1, 1, 1)
     axis.set_title(f"Population of {country}")
     axis.set_xlabel("Year")
-    axis.set_ylabel("Population")
-    axis.ticklabel_format(useOffset=False, style='plain')
+    axis.set_ylabel("Population in Millions")
+    axis.ticklabel_format(style="sci",scilimits=(6,6), axis='y')
     axis.plot(year, count)
 
     output = io.BytesIO()

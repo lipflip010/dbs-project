@@ -4,7 +4,28 @@
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <title>DBS Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bulma.css') }}">
 </head>
 <body>
+<section class="section">
+    <div class="container">
+        <form name="mainForm">
+            <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+            <div class="field has-addons">
+                <p class="control"><input class="input" type="text" name="country" id="country"/></p>
+
+                <p class="control">
+                    <button class="button" onclick="setCountry()" type="button">
+                        Go
+                    </button>
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <img id="image-container" src="" alt="Bild">
+
+
+</section>
 </body>
 </html>

@@ -1,12 +1,17 @@
 import io
 
-from flask import Flask, Response, request
-from matplotlib.backends.backend_svg import FigureCanvasSVG
+from flask import Flask, Response, request, render_template
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
 import database
 
 app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 
 @app.route('/population-total')
@@ -29,5 +34,6 @@ def population_total():
     axis.plot(year, count)
 
     output = io.BytesIO()
-    FigureCanvasSVG(fig).print_svg(output)
-    return Response(output.getvalue(), mimetype="image/svg+xml")
+
+    FigureCanvas(fig).print_png(output)
+    return Response(output.getvalue(), mimetype="image/png")

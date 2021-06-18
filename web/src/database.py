@@ -2,14 +2,14 @@ import psycopg2
 
 
 def execute_query(query: str):
-    conn = psycopg2.connect(host="localhost", port=5432, database="dbs2021", user="postgres", password="postgres")
+    connection = psycopg2.connect(host="localhost", port=5432, database="dbs2021", user="postgres", password="postgres")
 
-    cur = conn.cursor()
+    cursor = connection.cursor()
 
-    cur.execute(query)
-    query_results = cur.fetchall()
+    cursor.execute(query)
+    query_results = cursor.fetchall()
 
-    cur.close()
-    conn.close()
+    cursor.close()
+    connection.close()
 
     return query_results

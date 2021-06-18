@@ -2,6 +2,7 @@ import io
 
 from flask import Flask, Response, request, render_template
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.backends.backend_svg import FigureCanvasSVG
 from matplotlib.figure import Figure
 
 import database
@@ -30,10 +31,21 @@ def population_total():
     axis.set_title(f"Population of {country}")
     axis.set_xlabel("Year")
     axis.set_ylabel("Population in Millions")
-    axis.ticklabel_format(style="sci",scilimits=(6,6), axis='y')
+    axis.ticklabel_format(style="sci", scilimits=(6, 6), axis='y')
     axis.plot(year, count)
 
-    output = io.BytesIO()
+    return Response(create_svg(fig), mimetype="image/svg+xml")
 
-    FigureCanvas(fig).print_png(output)
-    return Response(output.getvalue(), mimetype="image/png")
+
+def create_png(figure: Figure) -> bytes:
+    output = io.BytesIO()
+    FigureCanvas(figure).print_png(output)
+    print(type(output.getvalue()))
+    return output.getvalue()
+
+
+def create_svg(figure: Figure) -> bytes:
+    output = io.BytesIO()
+    FigureCanvasSVG(figure).print_svg(output)
+    print(type(output.getvalue()))
+    return output.getvalue()

@@ -19,4 +19,4 @@ def population_total():
         figure: Figure = get_population_total_plot_for(country)
         return Response(create_svg(figure), mimetype="image/svg+xml")
     except:
-        return "Country not found", 404
+        return f"""Country '{country}' not found""", 404

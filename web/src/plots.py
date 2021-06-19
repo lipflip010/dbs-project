@@ -30,12 +30,10 @@ def get_population_total_plot_for(country: str) -> Figure:
 def create_png(figure: Figure) -> bytes:
     output = io.BytesIO()
     FigureCanvasPNG(figure).print_png(output)
-    print(type(output.getvalue()))
     return output.getvalue()
 
 
 def create_svg(figure: Figure) -> bytes:
     output = io.BytesIO()
     FigureCanvasSVG(figure).print_svg(output)
-    print(type(output.getvalue()))
     return output.getvalue()

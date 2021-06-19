@@ -39,7 +39,7 @@ To just stop container use the following:
 
 ### Start server
 
-    /web/src/start-server.sh
+    /web/start-server.sh
 
 
 

@@ -26,7 +26,7 @@ def population_total():
         return f"""Country '{country}' not found""", 404
 
 
-@app.route('/co2_emission')
+@app.route('/co2-emission')
 def co2_emission():
     country = request.args.get('country')
 

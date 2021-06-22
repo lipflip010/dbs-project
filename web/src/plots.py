@@ -26,7 +26,7 @@ class PlotCreator:
         axis = figure.add_subplot(1, 1, 1)
         axis.set_title(f"Population of {country}")
         axis.set_xlabel("Year")
-        axis.set_ylabel("Population in Millions")
+        axis.set_ylabel("Population in millions")
         axis.ticklabel_format(style="sci", scilimits=(6, 6), axis='y')
         axis.plot(year, count)
 
@@ -34,7 +34,7 @@ class PlotCreator:
 
     @staticmethod
     def get_co2_emission_plot_for(country: str) -> Figure:
-        query = f"""SELECT year,emission FROM co2_emission WHERE country_name='{country}' LIMIT 250"""
+        query = f"""SELECT year,emission FROM co2_emission WHERE country_name='{country}' AND year>=1960 LIMIT 250"""
         query_result = database.execute_query(query)
         print(query_result)
         if not query_result:
@@ -46,7 +46,7 @@ class PlotCreator:
         axis = figure.add_subplot(1, 1, 1)
         axis.set_title(f"Emission of {country}")
         axis.set_xlabel("Year")
-        axis.set_ylabel("Emission in tonnes")
+        axis.set_ylabel("Emission in million tonnes")
         axis.ticklabel_format(style="sci", scilimits=(6, 6), axis='y')
         axis.plot(year, emission)
 

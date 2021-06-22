@@ -27,6 +27,29 @@ def get_population_total_plot_for(country: str) -> Figure:
     return figure
 
 
+def get_co2_emission_plot_for(country: str) -> Figure:
+    query = f"""SELECT year,emission FROM co2_emission WHERE country_name='{country}' LIMIT 250"""
+    query_result = database.execute_query(query)
+    print(query_result)
+    if not query_result:
+        raise Exception("Country not found")
+
+    year, emission = zip(*query_result)
+    figure = Figure()
+
+    axis = figure.add_subplot(1, 1, 1)
+    axis.set_title(f"Emission of {country}")
+    axis.set_xlabel("Year")
+    axis.set_ylabel("Emission in tonnes")
+    axis.ticklabel_format(style="sci", scilimits=(6, 6), axis='y')
+    axis.plot(year, emission)
+
+    return figure
+
+    pass
+
+
+
 def create_png(figure: Figure) -> bytes:
     output = io.BytesIO()
     FigureCanvasPNG(figure).print_png(output)

@@ -1,7 +1,7 @@
 from flask import Flask, Response, request, render_template
 from matplotlib.figure import Figure
 
-from plots import create_svg, get_population_total_plot_for
+from plots import create_svg, get_population_total_plot_for, get_co2_emission_plot_for
 
 app = Flask(__name__)
 

@@ -20,3 +20,14 @@ def population_total():
         return Response(create_svg(figure), mimetype="image/svg+xml")
     except:
         return f"""Country '{country}' not found""", 404
+
+
+@app.route('/co2_emission')
+def co2_emission():
+    country = request.args.get('country')
+
+    try:
+        figure: Figure = get_co2_emission_plot_for(country)
+        return Response(create_svg(figure), mimetype="image/svg+xml")
+    except:
+        return f"""Country '{country}' not found""", 404

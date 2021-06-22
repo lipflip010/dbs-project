@@ -5,6 +5,7 @@ from matplotlib.backends.backend_svg import FigureCanvasSVG
 from matplotlib.figure import Figure
 
 import database
+from database import CountryNotFoundException
 
 
 def get_population_total_plot_for(country: str) -> Figure:
@@ -12,7 +13,7 @@ def get_population_total_plot_for(country: str) -> Figure:
     query_result = database.execute_query(query)
     print(query_result)
     if not query_result:
-        raise Exception("Country not found")
+        raise CountryNotFoundException("Country not found")
 
     year, count = zip(*query_result)
     figure = Figure()
@@ -32,7 +33,7 @@ def get_co2_emission_plot_for(country: str) -> Figure:
     query_result = database.execute_query(query)
     print(query_result)
     if not query_result:
-        raise Exception("Country not found")
+        raise CountryNotFoundException("Country not found")
 
     year, emission = zip(*query_result)
     figure = Figure()

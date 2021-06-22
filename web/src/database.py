@@ -13,3 +13,7 @@ def execute_query(query: str):
     connection.close()
 
     return query_results
+
+
+class CountryNotFoundException(Exception):
+    pass

@@ -7,12 +7,16 @@ def execute_query(query: str):
     cursor = connection.cursor()
 
     cursor.execute(query)
-    query_results = cursor.fetchall()
+    query_result = cursor.fetchall()
+
+    print(query_result)
+    if not query_result:
+        raise CountryNotFoundException("Country not found")
 
     cursor.close()
     connection.close()
 
-    return query_results
+    return query_result
 
 
 class CountryNotFoundException(Exception):

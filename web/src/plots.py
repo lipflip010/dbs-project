@@ -6,7 +6,6 @@ from matplotlib.backends.backend_svg import FigureCanvasSVG
 from matplotlib.figure import Figure
 
 import database
-from database import CountryNotFoundException
 
 
 class PlotCreator:
@@ -16,9 +15,6 @@ class PlotCreator:
     def get_population_total_plot_for(country: str) -> Figure:
         query = f"""SELECT year,count FROM population_total WHERE country_name='{country}' LIMIT 100"""
         query_result = database.execute_query(query)
-        print(query_result)
-        if not query_result:
-            raise CountryNotFoundException("Country not found")
 
         year, count = zip(*query_result)
         figure = Figure()
@@ -36,9 +32,6 @@ class PlotCreator:
     def get_co2_emission_plot_for(country: str) -> Figure:
         query = f"""SELECT year,emission FROM co2_emission WHERE country_name='{country}' AND year>=1960 LIMIT 250"""
         query_result = database.execute_query(query)
-        print(query_result)
-        if not query_result:
-            raise CountryNotFoundException("Country not found")
 
         year, emission = zip(*query_result)
         figure = Figure()
@@ -51,8 +44,6 @@ class PlotCreator:
         axis.plot(year, emission)
 
         return figure
-
-        pass
 
     def create_png(self, figure: Figure) -> bytes:
         with self.mutex:

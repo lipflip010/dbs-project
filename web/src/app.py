@@ -1,11 +1,14 @@
+from multiprocessing import Lock
+
 from flask import Flask, Response, request, render_template
 from matplotlib.figure import Figure
 
 from database import CountryNotFoundException
-from plots import create_svg, get_population_total_plot_for, get_co2_emission_plot_for
+from plots import PlotCreator
 
 app = Flask(__name__)
-
+mutex = Lock()
+plot_creator = PlotCreator()
 
 @app.route('/')
 def index():
@@ -17,8 +20,8 @@ def population_total():
     country = request.args.get('country')
 
     try:
-        figure: Figure = get_population_total_plot_for(country)
-        return Response(create_svg(figure), mimetype="image/svg+xml")
+        figure: Figure = plot_creator.get_population_total_plot_for(country)
+        return Response(plot_creator.create_svg(figure), mimetype="image/svg+xml")
     except CountryNotFoundException:
         return f"""Country '{country}' not found""", 404
 
@@ -28,7 +31,7 @@ def co2_emission():
     country = request.args.get('country')
 
     try:
-        figure: Figure = get_co2_emission_plot_for(country)
-        return Response(create_svg(figure), mimetype="image/svg+xml")
+        figure: Figure = plot_creator.get_co2_emission_plot_for(country)
+        return Response(plot_creator.create_svg(figure), mimetype="image/svg+xml")
     except CountryNotFoundException:
         return f"""Country '{country}' not found""", 404

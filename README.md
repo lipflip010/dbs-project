@@ -30,7 +30,7 @@ To just stop container use the following:
     sudo docker-compose -f docker-compose.yml build --no-cache
     sudo docker-compose -f docker-compose.yml up
 
-### Webserver
+## Webserver
 
 ### Setting up virtual env
 
@@ -41,5 +41,6 @@ To just stop container use the following:
 
     /web/start-server.sh
 
-
+## Sources
+https://www.kaggle.com/tunguz/country-regional-and-world-gdp?select=gdp_csv.csv
 

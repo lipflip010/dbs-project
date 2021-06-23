@@ -45,6 +45,23 @@ class PlotCreator:
 
         return figure
 
+    @staticmethod
+    def get_co2_per_capita_plot_for(country: str) -> Figure:
+        query = f"""SELECT year, emission_per_capita FROM co2_per_capita WHERE country_name='{country}' LIMIT 250"""
+        query_result = database.execute_query(query)
+
+        year, emission_per_capita = zip(*query_result)
+        figure = Figure()
+
+        axis = figure.add_subplot(1, 1, 1)
+        axis.set_title(f"Emission per capita of {country}")
+        axis.set_xlabel("Year")
+        axis.set_ylabel("Emission per capita in tonnes")
+        axis.ticklabel_format(style='plain', axis='y')
+        axis.plot(year, emission_per_capita)
+
+        return figure
+
     def create_png(self, figure: Figure) -> bytes:
         with self.mutex:
             output = io.BytesIO()

@@ -10,6 +10,7 @@ app = Flask(__name__)
 mutex = Lock()
 plot_creator = PlotCreator()
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -32,6 +33,17 @@ def co2_emission():
 
     try:
         figure: Figure = plot_creator.get_co2_emission_plot_for(country)
+        return Response(plot_creator.create_svg(figure), mimetype="image/svg+xml")
+    except CountryNotFoundException:
+        return f"""Country '{country}' not found""", 404
+
+
+@app.route('/co2-per-capita')
+def co2_per_capita():
+    country = request.args.get('country')
+
+    try:
+        figure: Figure = plot_creator.get_co2_per_capita_plot_for(country)
         return Response(plot_creator.create_svg(figure), mimetype="image/svg+xml")
     except CountryNotFoundException:
         return f"""Country '{country}' not found""", 404

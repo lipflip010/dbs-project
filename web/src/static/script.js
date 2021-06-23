@@ -1,4 +1,4 @@
-const images = ['population-total','co2-emission']
+const images = ['population-total','co2-emission','co2-per-capita']
 
 const setCountry = () => {
     const form = document.forms['mainForm']
@@ -8,8 +8,5 @@ const setCountry = () => {
         const url = `http://localhost:5000/${name}?country=${country}`
         document.querySelector(`#${name}-container`).src = url
     })
-    console.log(url)
-
-
 }
 

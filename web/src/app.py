@@ -13,7 +13,12 @@ plot_creator = PlotCreator()
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    endpoints = [
+        'co2-per-capita',
+        'population-total',
+        'co2-emission'
+    ]
+    return render_template('index.html', endpoints=endpoints)
 
 
 @app.route('/population-total')

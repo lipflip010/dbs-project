@@ -8,7 +8,7 @@
 </head>
 <body>
 <section class="section">
-    <div class="container">
+    <div class="container is-max-desktop">
         <div class="columns">
             <div class="column">
                 <form name="columnForm-one" class="box">
@@ -25,15 +25,11 @@
                         </p>
                     </div>
                 </form>
-                <img class="box" id="population-total-container-one"
-                     src="http://localhost:5000/population-total?country=Germany"
-                     alt="Bild">
-
-                <img class="box" id="co2-emission-container-one" src="http://localhost:5000/co2-emission?country=Germany"
-                     alt="Bild">
-                <img class="box" id="co2-per-capita-container-one"
-                     src="http://localhost:5000/co2-per-capita?country=Germany"
-                     alt="Bild">
+                {% for ep in endpoints %}
+                    <img class="box" id="{{ ep }}-container-one"
+                         src="http://localhost:5000/{{ ep }}?country=Germany"
+                         alt="Bild">
+                {% endfor %}
             </div>
 
             <div class="column">
@@ -51,20 +47,14 @@
                         </p>
                     </div>
                 </form>
-                <img class="box" id="population-total-container-two"
-                     src="http://localhost:5000/population-total?country=Germany"
-                     alt="Bild">
-                <img class="box" id="co2-emission-container-two" src="http://localhost:5000/co2-emission?country=Germany"
-                     alt="Bild">
-                <img class="box" id="co2-per-capita-container-two"
-                     src="http://localhost:5000/co2-per-capita?country=Germany"
-                     alt="Bild">
+                {% for ep in endpoints %}
+                    <img class="box" id="{{ ep }}-container-two"
+                         src="http://localhost:5000/{{ ep }}?country=India"
+                         alt="Bild">
+                {% endfor %}
             </div>
         </div>
-
     </div>
-
-
 </section>
 </body>
 </html>

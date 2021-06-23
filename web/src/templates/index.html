@@ -9,23 +9,61 @@
 <body>
 <section class="section">
     <div class="container">
-        <form name="mainForm">
-            <button type="submit" disabled style="display: none" aria-hidden="true"></button>
-            <div class="field has-addons">
-                <p class="control"><input class="input" type="text" name="country" id="country"/></p>
+        <div class="columns">
+            <div class="column">
+                <form name="columnForm-one" class="box">
+                    <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+                    <div class="field has-addons">
+                        <p class="control">
+                            <input class="input" type="text" placeholder="Enter country..."
+                                   name="country" id="country"/>
+                        </p>
+                        <p class="control">
+                            <button class="button" onclick="setCountry('one')" type="button">
+                                Go
+                            </button>
+                        </p>
+                    </div>
+                </form>
+                <img class="box" id="population-total-container-one"
+                     src="http://localhost:5000/population-total?country=Germany"
+                     alt="Bild">
 
-                <p class="control">
-                    <button class="button" onclick="setCountry()" type="button">
-                        Go
-                    </button>
-                </p>
+                <img class="box" id="co2-emission-container-one" src="http://localhost:5000/co2-emission?country=Germany"
+                     alt="Bild">
+                <img class="box" id="co2-per-capita-container-one"
+                     src="http://localhost:5000/co2-per-capita?country=Germany"
+                     alt="Bild">
             </div>
-        </form>
+
+            <div class="column">
+                <form name="columnForm-two" class="box">
+                    <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+                    <div class="field has-addons">
+                        <p class="control">
+                            <input class="input" type="text" placeholder="Enter country..."
+                                   name="country" id="country"/>
+                        </p>
+                        <p class="control">
+                            <button class="button" onclick="setCountry('two')" type="button">
+                                Go
+                            </button>
+                        </p>
+                    </div>
+                </form>
+                <img class="box" id="population-total-container-two"
+                     src="http://localhost:5000/population-total?country=Germany"
+                     alt="Bild">
+                <img class="box" id="co2-emission-container-two" src="http://localhost:5000/co2-emission?country=Germany"
+                     alt="Bild">
+                <img class="box" id="co2-per-capita-container-two"
+                     src="http://localhost:5000/co2-per-capita?country=Germany"
+                     alt="Bild">
+            </div>
+        </div>
+
     </div>
 
-    <img id="population-total-container" src="http://localhost:5000/population-total?country=Germany" alt="Bild">
-    <img id="co2-emission-container" src="http://localhost:5000/co2-emission?country=Germany" alt="Bild">
-    <img id="co2-per-capita-container" src="http://localhost:5000/co2-per-capita?country=Germany" alt="Bild">
 
 </section>
 </body>

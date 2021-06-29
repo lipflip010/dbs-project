@@ -41,6 +41,6 @@ To just stop container use the following:
 
     /web/start-server.sh
 
-## Sources
-https://www.kaggle.com/tunguz/country-regional-and-world-gdp?select=gdp_csv.csv
+### Sources
+https://matplotlib.org/stable/users/license.html
 

@@ -15,6 +15,7 @@ plot_creator = PlotCreator()
 def index():
     endpoints = [
         'co2-per-capita',
+        'renewable-energy',
         'population-total',
         'co2-emission'
     ]
@@ -38,6 +39,17 @@ def co2_emission():
 
     try:
         figure: Figure = plot_creator.get_co2_emission_plot_for(country)
+        return Response(plot_creator.create_svg(figure), mimetype="image/svg+xml")
+    except CountryNotFoundException:
+        return f"""Country '{country}' not found""", 404
+
+
+@app.route('/renewable-energy')
+def renewable_energy():
+    country = request.args.get('country')
+
+    try:
+        figure: Figure = plot_creator.get_renewable_energy_plot_for(country)
         return Response(plot_creator.create_svg(figure), mimetype="image/svg+xml")
     except CountryNotFoundException:
         return f"""Country '{country}' not found""", 404

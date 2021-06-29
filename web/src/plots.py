@@ -13,7 +13,7 @@ class PlotCreator:
 
     @staticmethod
     def get_population_total_plot_for(country: str) -> Figure:
-        query = f"""SELECT year,count FROM population_total WHERE country_name='{country}' LIMIT 100"""
+        query = f"""SELECT year,count FROM population_total WHERE country_name='{country}' AND year>=1990 LIMIT 100"""
         query_result = database.execute_query(query)
 
         year, count = zip(*query_result)
@@ -30,7 +30,7 @@ class PlotCreator:
 
     @staticmethod
     def get_co2_emission_plot_for(country: str) -> Figure:
-        query = f"""SELECT year,emission FROM co2_emission WHERE country_name='{country}' AND year>=1960 LIMIT 250"""
+        query = f"""SELECT year,emission FROM co2_emission WHERE country_name='{country}' AND year>=1990 LIMIT 250"""
         query_result = database.execute_query(query)
 
         year, emission = zip(*query_result)
@@ -46,8 +46,25 @@ class PlotCreator:
         return figure
 
     @staticmethod
+    def get_renewable_energy_plot_for(country: str) -> Figure:
+        query = f"""SELECT year,percentage_of_total FROM renewable_energy_consumption WHERE country_name='{country}' AND year>=1990 LIMIT 250"""
+        query_result = database.execute_query(query)
+
+        year, percentage_of_total = zip(*query_result)
+        figure = Figure()
+
+        axis = figure.add_subplot(1, 1, 1)
+        axis.set_title(f"Renewable energy consumption of {country}")
+        axis.set_xlabel("Year")
+        axis.set_ylabel("% of total consumption")
+        axis.ticklabel_format(style='plain', axis='y')
+        axis.plot(year, percentage_of_total)
+
+        return figure
+
+    @staticmethod
     def get_co2_per_capita_plot_for(country: str) -> Figure:
-        query = f"""SELECT year, emission_per_capita FROM co2_per_capita WHERE country_name='{country}' LIMIT 250"""
+        query = f"""SELECT year, emission_per_capita FROM co2_per_capita WHERE country_name='{country}' AND year>=1990 LIMIT 250"""
         query_result = database.execute_query(query)
 
         year, emission_per_capita = zip(*query_result)

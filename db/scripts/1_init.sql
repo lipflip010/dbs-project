@@ -15,9 +15,9 @@ CREATE TABLE co2_emission (
 
 CREATE TABLE gdp (
   Country_Name varchar(80),
-  Code varchar(10),
+  Country_Code varchar(10),
   Year int,
-  Value float,
+  USD float,
    PRIMARY KEY(Country_Name, Year)
 );
 

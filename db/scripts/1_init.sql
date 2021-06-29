@@ -5,6 +5,14 @@ CREATE TABLE population_total (
    PRIMARY KEY(Country_Name, Year)
 );
 
+CREATE TABLE population_growth (
+  Country_Name varchar(80),
+  Country_Code varchar(10),
+  Year int,
+  Growth_Percentage float,
+   PRIMARY KEY(Country_Name, Year)
+);
+
 CREATE TABLE co2_emission (
   Country_Name varchar(80),
   Code varchar(10),

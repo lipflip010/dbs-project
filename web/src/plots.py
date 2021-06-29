@@ -63,6 +63,23 @@ class PlotCreator:
         return figure
 
     @staticmethod
+    def get_gdp_plot_for(country: str) -> Figure:
+        query = f"""SELECT year,usd FROM gdp WHERE country_name='{country}' AND year>=1990 LIMIT 250"""
+        query_result = database.execute_query(query)
+
+        year, usd = zip(*query_result)
+        figure = Figure()
+
+        axis = figure.add_subplot(1, 1, 1)
+        axis.set_title(f"GDP of {country}")
+        axis.set_xlabel("Year")
+        axis.set_ylabel("GDP in billion USD")
+        axis.ticklabel_format(style="sci", scilimits=(9, 9), axis='y')
+        axis.plot(year, usd)
+
+        return figure
+
+    @staticmethod
     def get_co2_per_capita_plot_for(country: str) -> Figure:
         query = f"""SELECT year, emission_per_capita FROM co2_per_capita WHERE country_name='{country}' AND year>=1990 LIMIT 250"""
         query_result = database.execute_query(query)

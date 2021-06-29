@@ -1,40 +1,40 @@
 CREATE TABLE population_total (
-  Country_Name varchar(40),
-  Year int,
-  Count int,
-   PRIMARY KEY(Country_Name, Year)
+  country_name varchar(40),
+  year int,
+  count int,
+   PRIMARY KEY(country_Name, year)
 );
 
 CREATE TABLE population_growth (
-  Country_Name varchar(80),
-  Country_Code varchar(10),
-  Year int,
-  Growth_Percentage float,
-   PRIMARY KEY(Country_Name, Year)
+  country_name varchar(80),
+  country_code varchar(10),
+  year int,
+  growth_percentage float,
+   PRIMARY KEY(country_Name, year)
 );
 
 CREATE TABLE co2_emission (
-  Country_Name varchar(80),
-  Code varchar(10),
-  Year int,
-  Emission float,
-   PRIMARY KEY(Country_Name, Year)
+  country_name varchar(80),
+  code varchar(10),
+  year int,
+  emission float,
+   PRIMARY KEY(country_Name, year)
 );
 
 CREATE TABLE gdp (
-  Country_Name varchar(80),
-  Country_Code varchar(10),
-  Year int,
-  USD float,
-   PRIMARY KEY(Country_Name, Year)
+  country_name varchar(80),
+  country_code varchar(10),
+  year int,
+  usd float,
+   PRIMARY KEY(country_name, year)
 );
 
 CREATE TABLE renewable_energy_consumption (
-  Country_Name varchar(80),
-  Country_Code varchar(10),
-  Year int,
+  country_name varchar(80),
+  country_code varchar(10),
+  year int,
   percentage_of_total float,
-   PRIMARY KEY(Country_Name, Year)
+   PRIMARY KEY(country_name, year)
 );
 
 CREATE VIEW co2_per_capita AS

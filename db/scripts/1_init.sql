@@ -29,6 +29,14 @@ CREATE TABLE gdp (
    PRIMARY KEY(Country_Name, Year)
 );
 
+CREATE TABLE renewable_energy_consumption (
+  Country_Name varchar(80),
+  Country_Code varchar(10),
+  Year int,
+  percentage_of_total float,
+   PRIMARY KEY(Country_Name, Year)
+);
+
 CREATE VIEW co2_per_capita AS
 SELECT pt.country_name  AS country_name,
        pt.year          AS year,

@@ -24,6 +24,7 @@ class PlotCreator:
         axis.set_xlabel("Year")
         axis.set_ylabel("Population in millions")
         axis.ticklabel_format(style="sci", scilimits=(6, 6), axis='y')
+        axis.yaxis.get_offset_text().set_visible(False)
         axis.plot(year, count)
 
         return figure
@@ -41,6 +42,7 @@ class PlotCreator:
         axis.set_xlabel("Year")
         axis.set_ylabel("Emission in million tonnes")
         axis.ticklabel_format(style="sci", scilimits=(6, 6), axis='y')
+        axis.yaxis.get_offset_text().set_visible(False)
         axis.plot(year, emission)
 
         return figure
@@ -75,6 +77,7 @@ class PlotCreator:
         axis.set_xlabel("Year")
         axis.set_ylabel("GDP in billion USD")
         axis.ticklabel_format(style="sci", scilimits=(9, 9), axis='y')
+        axis.yaxis.get_offset_text().set_visible(False)
         axis.plot(year, usd)
 
         return figure

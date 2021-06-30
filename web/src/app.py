@@ -23,7 +23,7 @@ def index():
     ]
 
     columns = [
-        {'id': 'one', 'country': 'Germany'},
+        {'id': 'one', 'country': 'Albania'},
         {'id': 'two', 'country': 'United Kingdom'}
     ]
     return render_template('index.html', endpoints=endpoints, columns=columns)

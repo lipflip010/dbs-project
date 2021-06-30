@@ -76,3 +76,14 @@ def co2_per_capita():
         return Response(plot_creator.create_svg(figure), mimetype="image/svg+xml")
     except CountryNotFoundException:
         return f"""Country '{country}' not found""", 404
+
+
+@app.route('/gdp-per-capita')
+def gdp_per_capita():
+    country = request.args.get('country')
+
+    try:
+        figure: Figure = plot_creator.get_gdp_per_capita_plot_for(country)
+        return Response(plot_creator.create_svg(figure), mimetype="image/svg+xml")
+    except CountryNotFoundException:
+        return f"""Country '{country}' not found""", 404

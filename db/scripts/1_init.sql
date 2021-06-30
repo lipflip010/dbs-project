@@ -51,7 +51,7 @@ FROM co2_emission co2
 CREATE VIEW gdp_per_capita AS
 SELECT pt.country_name  AS country_name,
        pt.year          AS year,
-       usd / count AS gdp_per_capita
+       usd / count AS usd_per_capita
 FROM gdp
 INNER JOIN population_total pt
 ON gdp.country_name = pt.country_name

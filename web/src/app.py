@@ -15,6 +15,7 @@ plot_creator = PlotCreator()
 def index():
     endpoints = [
         'co2-per-capita',
+        'gdp-per-capita',
         'renewable-energy',
         'gdp',
         'population-total',

@@ -1,4 +1,4 @@
-const images = ['population-total','co2-emission','co2-per-capita','renewable-energy','gdp']
+const images = ['population-total','co2-emission','co2-per-capita','gdp-per-capita','renewable-energy','gdp']
 
 const setCountry = (column) => {
     const form = document.forms[`columnForm-${column}`]

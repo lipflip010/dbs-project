@@ -44,5 +44,15 @@ SELECT pt.country_name  AS country_name,
 FROM co2_emission co2
          INNER JOIN population_total pt
                     ON co2.country_name = pt.country_name
-                        AND co2.year = pt.year
-WHERE co2.year >= 1960
+                        AND co2.year = pt.year;
+
+
+
+CREATE VIEW gdp_per_capita AS
+SELECT pt.country_name  AS country_name,
+       pt.year          AS year,
+       usd / count AS gdp_per_capita
+FROM gdp
+INNER JOIN population_total pt
+ON gdp.country_name = pt.country_name
+AND gdp.year = pt.year

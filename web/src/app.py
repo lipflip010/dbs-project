@@ -14,12 +14,12 @@ plot_creator = PlotCreator()
 @app.route('/')
 def index():
     endpoints = [
-        'co2-per-capita',
-        'gdp-per-capita',
-        'renewable-energy',
-        'gdp',
-        'population-total',
-        'co2-emission'
+        {'name': 'co2-per-capita', 'title': 'CO2 emission per capita'},
+        {'name': 'gdp-per-capita', 'title': 'GDP per capita'},
+        {'name': 'renewable-energy', 'title': 'Renewable energy consumption'},
+        {'name': 'gdp', 'title': 'Gross domestic price'},
+        {'name': 'population-total', 'title': 'Total population'},
+        {'name': 'co2-emission', 'title': 'Total co2 emission'}
     ]
 
     columns = [

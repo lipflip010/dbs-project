@@ -20,8 +20,9 @@
 <section class="section has-background-primary">
     <div class="container">
         <div class="columns">
+        {% for col in columns %}
             <div class="column">
-                <form name="columnForm-one" class="box">
+                <form name="columnForm-{{ col['id'] }}" class="box">
                     <button type="submit" disabled style="display: none" aria-hidden="true"></button>
                     <div class="field has-addons">
                         <p class="control">
@@ -29,40 +30,19 @@
                                    name="country" id="country"/>
                         </p>
                         <p class="control">
-                            <button class="button" onclick="setCountry('one')" type="button">
+                            <button class="button" onclick="setCountry('{{ col['id']  }}')" type="button">
                                 Go
                             </button>
                         </p>
                     </div>
                 </form>
                 {% for ep in endpoints %}
-                    <img class="box" id="{{ ep }}-container-one"
-                         src="http://localhost:5000/{{ ep }}?country=Germany"
+                    <img hidden class="box" id="{{ ep }}-container-{{ col['id']  }}"
+                         src="http://localhost:5000/{{ ep }}?country={{ col['country'] }}"
                          alt="Bild">
                 {% endfor %}
             </div>
-
-            <div class="column">
-                <form name="columnForm-two" class="box">
-                    <button type="submit" disabled style="display: none" aria-hidden="true"></button>
-                    <div class="field has-addons">
-                        <p class="control">
-                            <input class="input" type="text" placeholder="Enter country..."
-                                   name="country" id="country"/>
-                        </p>
-                        <p class="control">
-                            <button class="button" onclick="setCountry('two')" type="button">
-                                Go
-                            </button>
-                        </p>
-                    </div>
-                </form>
-                {% for ep in endpoints %}
-                    <img class="box" id="{{ ep }}-container-two"
-                         src="http://localhost:5000/{{ ep }}?country=India"
-                         alt="Bild">
-                {% endfor %}
-            </div>
+        {% endfor %}
         </div>
     </div>
 </section>

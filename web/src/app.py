@@ -21,7 +21,12 @@ def index():
         'population-total',
         'co2-emission'
     ]
-    return render_template('index.html', endpoints=endpoints)
+
+    columns = [
+        {'id': 'one', 'country': 'Germany'},
+        {'id': 'two', 'country': 'United Kingdom'}
+    ]
+    return render_template('index.html', endpoints=endpoints, columns=columns)
 
 
 @app.route('/population-total')

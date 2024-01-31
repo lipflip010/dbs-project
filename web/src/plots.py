@@ -127,3 +127,4 @@ class PlotCreator:
             output = io.BytesIO()
             FigureCanvasSVG(figure).print_svg(output)
             return output.getvalue()
+A
